@@ -7,7 +7,8 @@ import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import CardHeader from "@material-ui/core/CardHeader";
-import { makeStyles } from "@material-ui/core";
+
+import ResponsiveImage from "../image/Responsive";
 
 type Props = {
   title: string;
@@ -17,16 +18,6 @@ type Props = {
   href: string;
 };
 
-const useStyles = makeStyles(() => ({
-  link: {
-    textDecoration: "none"
-  },
-  image: {
-    width: "100%",
-    height: "auto"
-  }
-}));
-
 const VideoCard: React.FC<Props> = ({
   image,
   title,
@@ -34,10 +25,8 @@ const VideoCard: React.FC<Props> = ({
   publishedAt,
   href
 }) => {
-  const classes = useStyles();
-
   return (
-    <a href={href} className={classes.link}>
+    <a href={href} style={{ textDecoration: "none" }}>
       <Box component={Card} height="100%" boxShadow={4}>
         <Box
           component={CardActionArea}
@@ -46,7 +35,7 @@ const VideoCard: React.FC<Props> = ({
           height="100%"
         >
           <CardHeader title={author} />
-          <img src={image} alt={title} className={classes.image} />
+          <ResponsiveImage src={image} alt={title} />
           <CardContent>
             <Typography variant="body2">{title}</Typography>
             <Typography variant="body2" color="textSecondary">
