@@ -8,7 +8,7 @@ import Navigation from "./navigation/Navigation";
 
 const Header = () => {
   return (
-    <Box component={AppBar} position="static" mb={3}>
+    <Box component={AppBar}>
       <Box component={Toolbar} p={0} display="flex">
         <Navigation />
       </Box>
