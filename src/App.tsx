@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import CssBaseline from "@material-ui/core/CssBaseline";
 
 import Header from "./layout/header/Header";
+import Grid from "./layout/grid/Grid";
 
 import home from "./pages/home";
 import youtube from "./pages/youtube";
@@ -14,11 +15,13 @@ const App = () => {
     <BrowserRouter>
       <CssBaseline />
       <Header />
-      <Switch>
-        <Route exact path="/" component={home} />
-        <Route exact path="/youtube" component={youtube} />
-        <Route path="/" component={not_found} />
-      </Switch>
+      <Grid>
+        <Switch>
+          <Route exact path="/" component={home} />
+          <Route exact path="/youtube" component={youtube} />
+          <Route path="/" component={not_found} />
+        </Switch>
+      </Grid>
     </BrowserRouter>
   );
 };
