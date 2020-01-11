@@ -1,13 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
+
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Box from "@material-ui/core/Box";
+
+import Navigation from "./navigation/Navigation";
 
 const Header = () => {
   return (
-    <div>
-      <h2>Header</h2>
-      <Link to="/">home</Link>
-      <Link to="/youtube">youtube</Link>
-    </div>
+    <Box component={AppBar} position="static" mb={3}>
+      <Box component={Toolbar} p={0} display="flex">
+        <Navigation />
+      </Box>
+    </Box>
   );
 };
 
