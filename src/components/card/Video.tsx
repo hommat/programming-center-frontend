@@ -28,20 +28,24 @@ const VideoCard: React.FC<Props> = ({
   return (
     <a href={href} style={{ textDecoration: "none" }}>
       <Box component={Card} height="100%" boxShadow={4}>
-        <Box
-          component={CardActionArea}
-          display="flex"
-          flexDirection="column"
-          height="100%"
-        >
-          <CardHeader title={author} />
-          <ResponsiveImage src={image} alt={title} />
-          <CardContent>
-            <Typography variant="body2">{title}</Typography>
-            <Typography variant="body2" color="textSecondary">
-              {moment(publishedAt).fromNow()}
-            </Typography>
-          </CardContent>
+        <Box component={CardActionArea} height="100%">
+          <Box display="flex" flexDirection="column" height="100%">
+            <CardHeader title={author} />
+            <ResponsiveImage src={image} alt={title} />
+            <Box
+              component={CardContent}
+              display="flex"
+              flexDirection="column"
+              flexGrow={1}
+            >
+              <Box display="flex" flexGrow={1} flexDirection="column">
+                <Typography variant="body2">{title}</Typography>
+              </Box>
+              <Typography variant="body2" color="textSecondary">
+                {moment(publishedAt).fromNow()}
+              </Typography>
+            </Box>
+          </Box>
         </Box>
       </Box>
     </a>
