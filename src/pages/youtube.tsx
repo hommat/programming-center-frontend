@@ -1,48 +1,20 @@
-import React, { useEffect, useState, useRef } from "react";
-import axios from "axios";
+import React from "react";
 
+import { useFetchOnMount } from "../hooks";
 import { Video } from "../models";
 
-import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
-import CircualProgress from "@material-ui/core/CircularProgress";
 import Grid from "@material-ui/core/Grid";
-import { makeStyles } from "@material-ui/core";
 
 import VideoCard from "../components/card/Video";
-
-const useStyles = makeStyles(theme => ({
-  title: {
-    marginBottom: theme.spacing(3)
-  }
-}));
+import Page from "../layout/page/Page";
 
 const YoutubePage = () => {
-  const classes = useStyles();
-  const mounted = useRef<boolean>(true);
-  const [videos, setVideos] = useState<Video[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-
-  useEffect((): VoidFunction => {
-    axios
-      .get<{ videos: Video[] }>("/api/youtube?videoCount=24")
-      .then(res => {
-        if (mounted.current) {
-          setVideos(res.data.videos);
-          setLoading(false);
-        }
-      })
-      .catch(err => console.error(err));
-
-    return () => (mounted.current = false);
-  }, []);
+  const [videos, loading] = useFetchOnMount<Video>(
+    "/api/youtube?videoCount=24"
+  );
 
   return (
-    <Box component="main" textAlign="center">
-      <Typography variant="h3" className={classes.title}>
-        Latest videos
-      </Typography>
-      {loading && <Box component={CircualProgress} />}
+    <Page title="Latest videos" loading={loading}>
       <Grid container spacing={5}>
         {videos.map(({ title, thumbnails, id, publishedAt, channelTitle }) => (
           <Grid item xs={12} sm={6} md={4} key={id}>
@@ -56,7 +28,7 @@ const YoutubePage = () => {
           </Grid>
         ))}
       </Grid>
-    </Box>
+    </Page>
   );
 };
 

@@ -15,3 +15,11 @@ export type Video = {
     high: Thumbnail;
   };
 };
+
+export type Repo = {
+  name: string;
+  id: string;
+  description: string;
+  githubURL: string;
+  deployURL?: string;
+};
