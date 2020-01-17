@@ -7,7 +7,6 @@ import DesktopNavigation from "./Desktop";
 import MobileNavigation from "./Mobile";
 
 export const links: { [route: string]: string } = {
-  "/": "Home",
   "/youtube": "Youtube",
   "/github": "Github",
   "/reddit": "Reddit"
