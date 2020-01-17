@@ -1,3 +1,14 @@
+export type RedditPost = {
+  title: string;
+  score: number;
+  name: string;
+  createdAt: number;
+  thumbnail?: string;
+  author: string;
+  url?: string;
+  redditurl: string;
+};
+
 export type Thumbnail = {
   url: string;
   width: number;

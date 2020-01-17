@@ -9,7 +9,8 @@ import MobileNavigation from "./Mobile";
 export const links: { [route: string]: string } = {
   "/": "Home",
   "/youtube": "Youtube",
-  "/github": "Github"
+  "/github": "Github",
+  "/reddit": "Reddit"
 };
 
 const Navigation = () => {
