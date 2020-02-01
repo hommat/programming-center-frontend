@@ -10,7 +10,7 @@ import Page from "../layout/page/Page";
 
 const YoutubePage = () => {
   const [videos, loading] = useFetchOnMount<Video>(
-    "/api/youtube?videoCount=24"
+    "/api/youtube?videoCount=50"
   );
 
   return (
